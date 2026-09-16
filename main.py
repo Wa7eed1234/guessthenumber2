@@ -37,12 +37,16 @@ import random
 numbers = [2, 23, 34]
 
 # Get the user's input.
-number = int(input("Enter a number: "))
+try:
+    number = int(input("Enter a number: "))
+except ValueError:
+    print("Please enter a whole number.")
+    raise SystemExit(1)
 
 # Check if the number is in the list.
 if number in numbers:
   # If the number is in the list, then print the next number in the list.
-  print("The next number is", numbers[numbers.index(number) + 1])
+  print("The next number is", numbers[(numbers.index(number) + 1) % len(numbers)])
 
 else:
   # If the number is not in the list, then print a random number from the list.
